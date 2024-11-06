@@ -1,7 +1,12 @@
 [package]
-name = "zotero-webdav-server"
+name = "Zync"
 version = "0.1.0"
 edition = "2021"
+authors = ["Anas Shashaey"]
+description = "Zotero WebDAV Server"
+repository = "https://github.com/she3o/zync"
+license = "LGPL-3.0"
+keywords = ["zotero", "webdav", "server", "sync", "bibliography"]
 
 [dependencies]
 hyper = { version = "0.14", features = ["full"] }
