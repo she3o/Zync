@@ -1,0 +1,9 @@
+[package]
+name = "zotero-webdav-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hyper = { version = "0.14", features = ["full"] }
+tokio = { version = "1", features = ["full"] }
+dav-server = "0.5.0"
