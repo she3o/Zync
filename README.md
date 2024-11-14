@@ -10,8 +10,11 @@ I would be surprised if it worked for you.
 
 - Clone repo
 - `cargo build --release` inside repo.
-- `./target/release/zync --host <HOST> --port <PORT> --`
+- `./target/release/zync --host <HOST> --port <PORT>`
+  - Without args, defaults to `0.0.0.0:4918`
+  - Use `--host 127.0.0.1` to allow other devices to connect.
 - On each Zotero instance, point your WebDAV URL to `http://<IP ADDRESS>:<PORT>`
+  - On other devices, you don't reach the server with `127.0.0.1`.
   - Note: `http` not `https`
 
 ## Future Plans
