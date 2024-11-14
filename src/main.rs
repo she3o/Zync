@@ -2,7 +2,9 @@
 
 use clap::Parser;
 use dav_server::{fakels::FakeLs, localfs::LocalFs, DavHandler};
+use env_logger::Env;
 use hyper::{server::conn::Http, service::service_fn};
+use log::{error, info};
 use std::{convert::Infallible, net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
 
@@ -25,6 +27,8 @@ struct Args {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    // Initialize the logger
+    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
     // Parse command-line arguments
     let args = Args::parse();
 
@@ -45,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 
     // Create a TCP listener
     let listener = TcpListener::bind(addr).await?;
-    println!("Server running on http://{}", addr);
+    info!("Server running on http://{}", addr);
 
     // Start accepting incoming connections
     loop {
@@ -68,7 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
                 )
                 .await
             {
-                eprintln!("Error serving connection: {:?}", err);
+                error!("Error serving connection: {:?}", err);
             }
         });
     }
