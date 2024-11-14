@@ -14,5 +14,6 @@ keywords = ["zotero", "webdav", "server", "sync", "bibliography"]
 hyper = { version = "0.14", features = ["full"] }
 tokio = { version = "1", features = ["full"] }
 dav-server = "0.5.0"
+clap = { version = "4.0", features = ["derive"] }
 
 # End of Cargo.toml

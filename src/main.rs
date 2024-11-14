@@ -1,17 +1,38 @@
 // src/main.rs
 
-use std::{convert::Infallible, net::SocketAddr, sync::Arc};
+use clap::Parser;
+use dav_server::{fakels::FakeLs, localfs::LocalFs, DavHandler};
 use hyper::{server::conn::Http, service::service_fn};
+use std::{convert::Infallible, net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
-use dav_server::{DavHandler, fakels::FakeLs, localfs::LocalFs};
+
+/// Zotero WebDAV Server Over LAN
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+    /// Host to bind the server to
+    #[clap(long, default_value = "0.0.0.0")]
+    host: String,
+
+    /// Port to bind the server to
+    #[clap(short, long, default_value = "4918")]
+    port: u16,
+
+    /// Directory to serve
+    #[clap(short, long, default_value = "data")]
+    directory: String,
+}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    // Define the address to bind the server
-    let addr: SocketAddr = ([0, 0, 0, 0], 4918).into();
+    // Parse command-line arguments
+    let args = Args::parse();
 
-    // Create the filesystem handler pointing to the "data" directory
-    let dav_fs = LocalFs::new("data", false, false, false);
+    // Define the address to bind the server
+    let addr: SocketAddr = format!("{}:{}", args.host, args.port).parse()?; // let addr: SocketAddr = ([0, 0, 0, 0], 4918).into();
+
+    // Create the filesystem handler pointing to the specified directory
+    let dav_fs = LocalFs::new(args.directory.clone(), false, false, false);
 
     // Create the lock system
     let dav_ls = FakeLs::new();
