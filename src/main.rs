@@ -29,11 +29,10 @@ struct Args {
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     // Initialize the logger
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
-    // Parse command-line arguments
+
     let args = Args::parse();
 
-    // Define the address to bind the server
-    let addr: SocketAddr = format!("{}:{}", args.host, args.port).parse()?; // let addr: SocketAddr = ([0, 0, 0, 0], 4918).into();
+    let addr: SocketAddr = format!("{}:{}", args.host, args.port).parse()?;
 
     // Create the filesystem handler pointing to the specified directory
     let dav_fs = LocalFs::new(args.directory.clone(), false, false, false);

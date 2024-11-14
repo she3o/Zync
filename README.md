@@ -9,8 +9,9 @@ I would be surprised if it worked for you.
 ## How to use it
 
 - Clone repo
-- `cargo run --release` inside repo.
-- On each Zotero instance, point your WebDAV URL to `http://<IP ADDRESS>:4918`
+- `cargo build --release` inside repo.
+- `./target/release/zync --host <HOST> --port <PORT> --`
+- On each Zotero instance, point your WebDAV URL to `http://<IP ADDRESS>:<PORT>`
   - Note: `http` not `https`
 
 ## Future Plans
@@ -19,7 +20,7 @@ If I (or you!) ever had time, here is a list of things I plan to do:
 
 - [x] Basic WebDAV Support: `PROPFIND`, `GET`, `PUT`, `DELETE`.
 - Add logging
-  - To TTY
+  - [x] To TTY
   - To log file
 - Add username/password authentication.
 - Add a test suite:
@@ -29,9 +30,7 @@ If I (or you!) ever had time, here is a list of things I plan to do:
     - Memory
 - Dynamic port binding
 - SSL/TLS
-- argument parsing:
-  - `--data-dir`
-  - `--port`
+- [x] argument parsing
 - Sync Status Monitoring
 - File Versioning and backup
 - Systemd service
@@ -42,7 +41,3 @@ If I (or you!) ever had time, here is a list of things I plan to do:
   - etc
 - Configuration file
 - Docker container
-
-## Regrets
-
-Maybe Rust was an overkill.
