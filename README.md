@@ -1,6 +1,5 @@
 # Zync
 
-[![Build Status](https://github.com/she3o/zync/actions/workflows/ci.yml/badge.svg)](https://github.com/she3o/zync/actions)
  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://github.com/she3o/zync/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/she3o/zync.svg)](https://github.com/she3o/zync/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/she3o/zync.svg?style=social&label=Star)](https://github.com/she3o/zync)
