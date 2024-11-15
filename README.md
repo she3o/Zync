@@ -1,5 +1,11 @@
 # Zync
 
+[![Build Status](https://github.com/she3o/zync/actions/workflows/ci.yml/badge.svg)](https://github.com/she3o/zync/actions)
+[![License](https://img.shields.io/github/license/she3o/zync.svg)](https://github.com/she3o/zync/blob/main/LICENSE)
+[![Issues](https://img.shields.io/github/issues/she3o/zync.svg)](https://github.com/she3o/zync/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/she3o/zync.svg?style=social&label=Star)](https://github.com/she3o/zync)
+
+
 Zync is a lightweight and straightforward WebDAV server
 designed specifically for syncing Zotero collections within a local network.
 
